@@ -34,7 +34,6 @@ dns:
   enable: true
   ipv6: false
   listen: 127.0.0.1:5352 
-{% endif %}
 {% else %}
 tun:
   enable: true         
