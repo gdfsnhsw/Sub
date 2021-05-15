@@ -22,18 +22,7 @@ experimental:
   ignore-resolve-fail: true
 
 
-{% if exists("request.clash.dns") %}
-{% if request.clash.dns == "tap" %}
-ipv6: true
-#interface-name: WLAN
-hosts:
-dns:
-  enable: true
-  listen: 0.0.0.0:53
-  ipv6: true
-{% endif %}
-{% if request.clash.dns == "tun" %}
-# TUN设置
+{% if default(request.clash.dns, "") == "1" %}
 tun:
   enable: true         
   stack: gvisor
@@ -54,44 +43,6 @@ dns:
   fake-ip-range: 198.19.0.1/16
   use-hosts: true
 {% endif %}
-{% if request.clash.dns == "cfa" %}
-ipv6: false
-tun:
-  enable: true
-  stack: system # or gvisor
-hosts:
-dns:
-  enable: true
-  listen: 127.0.0.1:1053
-  ipv6: false
-{% endif %}
-{% else %}
-tun:
-  enable: true         
-  stack: gvisor
-  dns-hijack:
-    - tcp://8.8.8.8:53
-    - tcp://8.8.4.4:53
-    - 8.8.8.8:53
-    - 8.8.8.8:53
-
-# DNS设置  
-dns:
-  enable: true
-  ipv6: false
-  listen: 127.0.0.1:5352         
-    default-nameserver:
-    - 223.5.5.5
-  enhanced-mode: fake-ip
-  fake-ip-range: 198.19.0.1/16
-  use-hosts: true
-{% endif %}
-
-
-
-
-
-
 
   fake-ip-filter:
     - msftconnecttest.com
