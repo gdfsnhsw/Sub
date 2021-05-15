@@ -66,12 +66,25 @@ dns:
   ipv6: false
 {% endif %}
 {% else %}
-ipv6: true
-hosts:
+tun:
+  enable: true         
+  stack: gvisor
+  dns-hijack:
+    - tcp://8.8.8.8:53
+    - tcp://8.8.4.4:53
+    - 8.8.8.8:53
+    - 8.8.8.8:53
+
+# DNS设置  
 dns:
   enable: true
-  listen: 127.0.0.1:1053
-  ipv6: true
+  ipv6: false
+  listen: 127.0.0.1:5352         
+    default-nameserver:
+    - 223.5.5.5
+  enhanced-mode: fake-ip
+  fake-ip-range: 198.19.0.1/16
+  use-hosts: true
 {% endif %}
 
 
