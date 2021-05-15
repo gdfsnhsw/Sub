@@ -17,12 +17,22 @@ profile:
   store-selected: true
   tracing: false
 
-
-
 # 实验性功能
 experimental:
   ignore-resolve-fail: true
 
+
+{% if exists("request.clash.dns") %}
+{% if request.clash.dns == "tap" %}
+ipv6: true
+#interface-name: WLAN
+hosts:
+dns:
+  enable: true
+  listen: 0.0.0.0:53
+  ipv6: true
+{% endif %}
+{% if request.clash.dns == "tun" %}
 # TUN设置
 tun:
   enable: true         
@@ -43,6 +53,33 @@ dns:
   enhanced-mode: fake-ip
   fake-ip-range: 198.19.0.1/16
   use-hosts: true
+{% endif %}
+{% if request.clash.dns == "cfa" %}
+ipv6: false
+tun:
+  enable: true
+  stack: system # or gvisor
+hosts:
+dns:
+  enable: true
+  listen: 127.0.0.1:1053
+  ipv6: false
+{% endif %}
+{% else %}
+ipv6: true
+hosts:
+dns:
+  enable: true
+  listen: 127.0.0.1:1053
+  ipv6: true
+{% endif %}
+
+
+
+
+
+
+
   fake-ip-filter:
     - msftconnecttest.com
     - "*.msftconnecttest.com"
