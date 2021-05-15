@@ -58,19 +58,76 @@ dns:
   use-hosts: true
 
 
-
-
   fake-ip-filter:
-    - msftconnecttest.com
-    - "*.msftconnecttest.com"
-    - msftncsi.com
-    - "*.msftncsi.com"
-    - '.lan'
-    - localhost.ptlogin2.qq.com    
-    - '.srv.nintendo.net'   
-    - '.stun.playstation.net'   
-    - 'xbox.*.microsoft.com'    
-    - '.xboxlive.com'
+    # === LAN ===
+    - '*.lan'
+    - '*.localdomain'
+    - '*.example'
+    - '*.invalid'
+    - '*.localhost'
+    - '*.test'
+    - '*.local'
+    - '*.home.arpa'
+    # === Linksys Wireless Router ===
+    - '*.linksys.com'
+    - '*.linksyssmartwifi.com'
+    # === ASUS Router ===
+    - '*.router.asus.com'
+    # === Apple Software Update Service ===
+    - 'swscan.apple.com'
+    - 'mesu.apple.com'
+    # === Windows 10 Connnect Detection ===
+    - '*.msftconnecttest.com'
+    - '*.msftncsi.com'
+    - 'msftconnecttest.com'
+    - 'msftncsi.com'
+    # === Google ===
+    - 'lens.l.google.com'
+    - 'stun.l.google.com'
+    ## Golang
+    - 'proxy.golang.org'
+    # === NTP Service ===
+    - 'time.*.com'
+    - 'time.*.gov'
+    - 'time.*.edu.cn'
+    - 'time.*.apple.com'
+    - 'time1.*.com'
+    - 'time2.*.com'
+    - 'time3.*.com'
+    - 'time4.*.com'
+    - 'time5.*.com'
+    - 'time6.*.com'
+    - 'time7.*.com'
+    - 'ntp.*.com'
+    - 'ntp1.*.com'
+    - 'ntp2.*.com'
+    - 'ntp3.*.com'
+    - 'ntp4.*.com'
+    - 'ntp5.*.com'
+    - 'ntp6.*.com'
+    - 'ntp7.*.com'
+    - '*.time.edu.cn'
+    - '*.ntp.org.cn'
+    - '+.pool.ntp.org'
+    - 'time1.cloud.tencent.com'
+    # === Game Service ===
+    ## Nintendo Switch
+    - '+.srv.nintendo.net'
+    ## Sony PlayStation
+    - '+.stun.playstation.net'
+    ## Microsoft Xbox
+    - 'xbox.*.microsoft.com'
+    - 'xnotify.xboxlive.com'
+    # === Other ===
+    ## QQ Quick Login
+    - 'localhost.ptlogin2.qq.com'
+    - 'localhost.sec.qq.com'
+    ## STUN Server
+    - 'stun.*.*'
+    - 'stun.*.*.*'
+    - '+.stun.*.*'
+    - '+.stun.*.*.*'
+    - '+.stun.*.*.*.*'
   nameserver:
     - 223.5.5.5
 
