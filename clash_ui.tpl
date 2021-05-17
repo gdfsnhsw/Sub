@@ -11,7 +11,7 @@ ipv6: false
 external-controller: 0.0.0.0:9090
 external-ui: dashboard
 secret: ''
-interface-name: eth0
+interface-name: en0
 profile:
   store-selected: true
   tracing: false
