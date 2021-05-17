@@ -129,4 +129,14 @@ dns:
   nameserver:
     - 223.5.5.5
 
+{% if local.clash.new_field_name == "true" %}
+proxies: ~
+proxy-groups: ~
+rules: ~
+{% else %}
+Proxy: ~
+Proxy Group: ~
+Rule: ~
+{% endif %}
+
 {% endif %}
